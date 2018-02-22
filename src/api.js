@@ -1,7 +1,18 @@
 export const getPokeType = async () => {
-  const response = await fetch('http://localhost:3001/types')
+  try {
+    const response = await fetch('http://localhost:3001/types')
+    
+    if (response.status < 300) {
+      return await response.json()
+      
+    } else {
+      throw new Error ('cannot get types')
+    }
 
-  return await response.json()
+  } catch (error) {
+    throw error
+  }
+
 }
 
 
