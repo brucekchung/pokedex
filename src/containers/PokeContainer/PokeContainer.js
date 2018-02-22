@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { sendTypeAction } from '../../actions/actionIndex'
 import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
+import { Card } from '../../components/Card/Card'
 
 export class PokeContainer extends Component {
   componentDidMount = async () => {
@@ -13,9 +14,23 @@ export class PokeContainer extends Component {
     this.props.sendType(pokeType)
   }
 
-  handleClick = async () => {
-    const poke = await getPokemon('1')
-    console.log('poke: ', poke)
+  handleClick = async (id) => {
+    const pokeOfType = this.props.pokeType[id -1].pokemon 
+    console.log('pokeOfType: ', pokeOfType)
+    // const poke = await getPokemon('1')
+    // console.log('poke: ', poke)
+  }
+
+  generateCards = () => {
+    return this.props.pokeType.map(type => {
+      return (
+        <Card 
+          name={type.name}
+          id={type.id}
+          getPoke={this.handleClick}
+        />
+      )
+    })
   }
 
   render() {
@@ -23,17 +38,23 @@ export class PokeContainer extends Component {
       <div>
         <Loading />
         <button onClick={this.handleClick}> Pokemon! </button>
+        {
+          this.props.pokeType &&
+          this.generateCards()
+        }
       </div>
-    );
+    )
   }
 }
 
 PokeContainer.propTypes = {
   fake: shape({ fake: string }),
   fakeAction: func //isRequired
-};
+}
 
-export const mapState = ({ fake }) => ({ fake })
+export const mapState = state => ({ 
+  pokeType: state.type
+})
 
 export const mapDispatch = dispatch => ({ 
   sendType: (type) => dispatch(sendTypeAction(type))
