@@ -33,9 +33,9 @@ PokeContainer.propTypes = {
   fakeAction: func //isRequired
 };
 
-const mapState = ({ fake }) => ({ fake })
+export const mapState = ({ fake }) => ({ fake })
 
-const mapDispatch = dispatch => ({ 
+export const mapDispatch = dispatch => ({ 
   sendType: (type) => dispatch(sendTypeAction(type))
 })
 
