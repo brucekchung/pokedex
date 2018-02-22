@@ -1,0 +1,8 @@
+.loading-gif {
+  color: blue;
+}
+
+.loading-gif img {
+  height: 100px;
+  width: 120px;
+}
