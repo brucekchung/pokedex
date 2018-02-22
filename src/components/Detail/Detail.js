@@ -5,7 +5,7 @@ export const Detail = ({ id, name, detail, toggle }) => {
   const allPoke = () => {
     return detail.map(poke => {
       return (
-        <div onClick={() => toggle(id)} >
+        <div>
           <img src={poke.sprites.front_default} />
           <h3>{poke.name}</h3>
           <p>type: {name}</p>
@@ -16,12 +16,12 @@ export const Detail = ({ id, name, detail, toggle }) => {
   }
 
   return(
-    <div className="Detail Card">
+    <div className="Detail Card" onClick={() => toggle(id)}>
+      <p>{name}</p>
       {
         detail &&
         allPoke()
       }
-      <p>{name}</p>
     </div>
   )
 }

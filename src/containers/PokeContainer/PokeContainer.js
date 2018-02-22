@@ -38,6 +38,7 @@ export class PokeContainer extends Component {
             detail={this.props.detail} 
             name={type.name} 
             id={type.id}
+            key={type.id}
             toggle={this.toggle} />
         )
       } else {
@@ -45,6 +46,7 @@ export class PokeContainer extends Component {
           <Card 
             name={type.name}
             id={type.id}
+            key={type.id}
             getPoke={this.handleClick}
           />
         )

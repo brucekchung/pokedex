@@ -5,7 +5,6 @@ export const Card = ({ name, getPoke, id }) => (
   <div 
     className="Card" 
     id={id} 
-    key={name + id} 
     onClick={() => getPoke(id)}>
     <p>{name}</p>
   </div>
