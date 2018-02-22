@@ -45,6 +45,7 @@ export class PokeContainer extends Component {
           <Card 
             name={type.name}
             id={type.id}
+            key={type.id}
             getPoke={this.handleClick}
           />
         )

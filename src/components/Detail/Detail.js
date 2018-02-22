@@ -3,9 +3,9 @@ import './Detail.css'
 
 export const Detail = ({ id, name, detail, toggle }) => {
   const allPoke = () => {
-    return detail.map(poke => {
+    return detail.map((poke, i) => {
       return (
-        <div onClick={() => toggle(id)} >
+        <div key={i} onClick={() => toggle(id)} >
           <img src={poke.sprites.front_default} />
           <h3>{poke.name}</h3>
           <p>type: {name}</p>
