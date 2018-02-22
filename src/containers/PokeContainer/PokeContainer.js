@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { shape, func, string, arrayOf, object } from 'prop-types' //PropTypes
+import { func, string, arrayOf, object } from 'prop-types'
 import { connect } from 'react-redux'
-import { sendTypeAction, sendClickedAction, sendDetailAction } from '../../actions/actionIndex'
 import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
 import { Card } from '../../components/Card/Card'
 import { Detail } from '../../components/Detail/Detail'
 import './PokeContainer.css'
+import { 
+  sendTypeAction, 
+  sendClickedAction, 
+  sendDetailAction } from '../../actions/actionIndex'
 
 export class PokeContainer extends Component {
   componentDidMount = async () => {
@@ -73,15 +76,18 @@ export class PokeContainer extends Component {
 }
 
 PokeContainer.propTypes = {
-  // fake: shape({ fake: string }),
-  // fakeAction: func //isRequired
-  pokeType: arrayOf(object)
+  pokeType: arrayOf(object),
+  clicked: arrayOf(object),
+  detail: string,
+  sendType: func,
+  sendClicked: func,
+  sendDetail: func
 }
 
 export const mapState = state => ({ 
   pokeType: state.type,
   clicked: state.clicked,
-  detail: state.detail,
+  detail: state.detail
 })
 
 export const mapDispatch = dispatch => ({ 
