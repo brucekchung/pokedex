@@ -9,11 +9,30 @@ describe('PokeContainer', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  it.skip('mapState should return the correct data', () => {
+  it('mapState should return the correct data', () => {
+    const state = {
+      type: 'stuff',
+      clicked: 'things',
+      detail: 'nah'
+    }
+    const actual = mapState(state)
+    const expected = { 
+      pokeType: 'stuff',
+      clicked: 'things',
+      detail: 'nah'
+    }
 
+    expect(actual).toEqual(expected)
   })
 
-  it.skip('mapDispatch should call dispatch when one of the props are called', () => {
-    
+  it('mapDispatch should call dispatch when one of the props are called', () => {
+    const mockDispatch = jest.fn()
+    const call = mapDispatch(mockDispatch)
+
+    call.sendType()
+
+    expect(mockDispatch).toHaveBeenCalled()
   })
 })
+
+

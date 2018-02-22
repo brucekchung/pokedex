@@ -57,7 +57,10 @@ export class PokeContainer extends Component {
   render() {
     return (
       <div className="PokeContainer">
-        <Loading />
+        {
+          !this.props.pokeType &&
+          <Loading />
+        }
         {
           this.props.pokeType &&
           <div className="pokemon">

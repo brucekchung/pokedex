@@ -19,12 +19,9 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Unknown />,
-        <button
-          onClick={[Function]}
-        >
-           Pokemon! 
-        </button>,
+        undefined,
       ],
+      "className": "PokeContainer",
     },
     "ref": null,
     "rendered": Array [
@@ -37,18 +34,7 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": " Pokemon! ",
-          "onClick": [Function],
-        },
-        "ref": null,
-        "rendered": " Pokemon! ",
-        "type": "button",
-      },
+      undefined,
     ],
     "type": "div",
   },
@@ -60,12 +46,9 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Unknown />,
-          <button
-            onClick={[Function]}
-          >
-             Pokemon! 
-          </button>,
+          undefined,
         ],
+        "className": "PokeContainer",
       },
       "ref": null,
       "rendered": Array [
@@ -78,18 +61,7 @@ ShallowWrapper {
           "rendered": null,
           "type": [Function],
         },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": " Pokemon! ",
-            "onClick": [Function],
-          },
-          "ref": null,
-          "rendered": " Pokemon! ",
-          "type": "button",
-        },
+        undefined,
       ],
       "type": "div",
     },
