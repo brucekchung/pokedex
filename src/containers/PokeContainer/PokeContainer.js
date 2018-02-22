@@ -11,7 +11,6 @@ import './PokeContainer.css'
 export class PokeContainer extends Component {
   componentDidMount = async () => {
     const pokeType = await getPokeType()
-    console.log('pokeType: ', pokeType)
 
     this.props.sendType(pokeType)
   }
@@ -21,16 +20,25 @@ export class PokeContainer extends Component {
     const mappedPoke = pokeOfType.map(poke => getPokemon(poke))
     const pokeData = await Promise.all(mappedPoke)
 
-    console.log('pokeData: ', pokeData)
-    this.props.sendClicked(id)
     this.props.sendDetail(pokeData)
+    this.props.sendClicked(id)
+  }
+
+  toggle = (id) => {
+    if (this.props.clicked === id) {
+      this.props.sendClicked(null)
+    }
   }
 
   generateCards = () => {
     return this.props.pokeType.map(type => {
       if (type.id === this.props.clicked) {
         return (
-          <Detail detail={this.props.detail} name={type.name} />
+          <Detail 
+            detail={this.props.detail} 
+            name={type.name} 
+            id={type.id}
+            toggle={this.toggle} />
         )
       } else {
         return (
