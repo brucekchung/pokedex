@@ -5,6 +5,7 @@ import { sendTypeAction, sendClickedAction } from '../../actions/actionIndex'
 import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
 import { Card } from '../../components/Card/Card'
+import { Detail } from '../../components/Detail/Detail'
 import './PokeContainer.css'
 
 export class PokeContainer extends Component {
@@ -17,17 +18,19 @@ export class PokeContainer extends Component {
 
   handleClick = async (id) => {
     const pokeOfType = this.props.pokeType[id -1].pokemon 
-    console.log('pokeOfType: ', pokeOfType)
+    const mappedPoke = pokeOfType.map(poke => getPokemon(poke))
+    const pokeData = await Promise.all(mappedPoke)
 
+    console.log('pokeData: ', pokeData)
     this.props.sendClicked(id)
-    // const poke = await getPokemon('1')
-    // console.log('poke: ', poke)
   }
 
   generateCards = () => {
     return this.props.pokeType.map(type => {
       if (type.id === this.props.clicked) {
-        return <div>ITS WORKING</div>
+        return (
+          <Detail />
+        )
       } else {
         return (
           <Card 
