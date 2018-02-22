@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React from 'react'
 import { PokeContainer, mapState, mapDispatch } from './PokeContainer'
 import { shallow } from 'enzyme'
@@ -32,6 +33,18 @@ describe('PokeContainer', () => {
     call.sendType()
 
     expect(mockDispatch).toHaveBeenCalled()
+  })
+
+  it.skip('should make a fetch call when handleClick is called', () => {
+    const wrapper = shallow(<PokeContainer />)
+    window.fetch = jest.fn()
+
+    wrapper.instance().handleClick()
+    expect(window.fetch).toHaveBeenCalled()
+  })
+
+  it.skip('test for generateCards?', () => {
+
   })
 })
 
