@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { func, string, arrayOf, object } from 'prop-types'
+import { func, string, arrayOf, object, oneOfType } from 'prop-types'
 import { connect } from 'react-redux'
 import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
@@ -77,8 +77,8 @@ export class PokeContainer extends Component {
 
 PokeContainer.propTypes = {
   pokeType: arrayOf(object),
-  clicked: arrayOf(object),
-  detail: string,
+  clicked: oneOfType([arrayOf(object) ,string]),
+  detail: arrayOf(object),
   sendType: func,
   sendClicked: func,
   sendDetail: func
