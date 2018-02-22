@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { shape, func, string } from 'prop-types' //PropTypes
 import { connect } from 'react-redux'
 import { sendTypeAction } from '../../actions/actionIndex'
-import { getPokeType } from '../../api'
+import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
 
 export class PokeContainer extends Component {
@@ -13,9 +13,9 @@ export class PokeContainer extends Component {
     this.props.sendType(pokeType)
   }
 
-  handleClick = () => {
-
-    console.log('handleClick')
+  handleClick = async () => {
+    const poke = await getPokemon('1')
+    console.log('poke: ', poke)
   }
 
   render() {
@@ -33,9 +33,9 @@ PokeContainer.propTypes = {
   fakeAction: func //isRequired
 };
 
-const mapState = ({ fake }) => ({ fake })
+export const mapState = ({ fake }) => ({ fake })
 
-const mapDispatch = dispatch => ({ 
+export const mapDispatch = dispatch => ({ 
   sendType: (type) => dispatch(sendTypeAction(type))
 })
 

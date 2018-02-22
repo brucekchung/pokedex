@@ -12,9 +12,12 @@ export const getPokeType = async () => {
   } catch (error) {
     throw error
   }
-
 }
 
+export const getPokemon = async (pokeId) => {
+  const response = await fetch(`http://localhost:3001/pokemon/${pokeId}`)
 
+  return await response.json()
+}
 
 
