@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import PropTypes, { shape, func, string } from 'prop-types'
+import { shape, func, string } from 'prop-types' //PropTypes
 import { connect } from 'react-redux'
 import { sendTypeAction } from '../../actions/actionIndex'
 import { getPokeType } from '../../api'
+import { Loading } from '../../components/Loading/Loading'
 
 export class PokeContainer extends Component {
   componentDidMount = async () => {
@@ -20,6 +21,7 @@ export class PokeContainer extends Component {
   render() {
     return (
       <div>
+        <Loading />
         <button onClick={this.handleClick}> Pokemon! </button>
       </div>
     );
