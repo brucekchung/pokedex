@@ -7,7 +7,7 @@ export const Detail = ({ id, name, detail, toggle }) => {
     return detail.map(poke => {
       return (
         <div key={poke.name}>
-          <img src={poke.sprites.front_default} />
+          <img src={poke.sprites.front_default} alt="pokemon"/>
           <h3>{poke.name}</h3>
           <p>type: {name}</p>
           <p>weight: {poke.weight}</p>
