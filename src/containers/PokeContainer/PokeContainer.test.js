@@ -35,16 +35,12 @@ describe('PokeContainer', () => {
     expect(mockDispatch).toHaveBeenCalled()
   })
 
-  it.skip('should make a fetch call when handleClick is called', () => {
-    const wrapper = shallow(<PokeContainer />)
+  it('should make a fetch call when handleClick is called', () => {
     window.fetch = jest.fn()
+    const wrapper = shallow(<PokeContainer handleClick={window.fetch}/>)
 
     wrapper.instance().handleClick()
     expect(window.fetch).toHaveBeenCalled()
-  })
-
-  it.skip('test for generateCards?', () => {
-
   })
 })
 
