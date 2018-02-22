@@ -1,10 +1,10 @@
 import React from 'react'
-import App from './App'
+import Loading from './Loading'
 import { shallow } from 'enzyme'
 
-describe('App', () => {
+describe('Loading', () => {
   it('should match the snapshot', () => {
-    const wrapper = shallow(<App />)
+    const wrapper = shallow(<Loading />)
 
     expect(wrapper).toMatchSnapshot()
   })
