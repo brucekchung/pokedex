@@ -1,11 +1,12 @@
 import React from 'react'
+import { func, string, arrayOf, object } from 'prop-types'
 import './Detail.css'
 
 export const Detail = ({ id, name, detail, toggle }) => {
   const allPoke = () => {
     return detail.map(poke => {
       return (
-        <div>
+        <div key={poke.name}>
           <img src={poke.sprites.front_default} />
           <h3>{poke.name}</h3>
           <p>type: {name}</p>
@@ -15,7 +16,7 @@ export const Detail = ({ id, name, detail, toggle }) => {
     })
   }
 
-  return(
+  return (
     <div className="Detail Card" onClick={() => toggle(id)}>
       <p>{name}</p>
       {
@@ -24,4 +25,11 @@ export const Detail = ({ id, name, detail, toggle }) => {
       }
     </div>
   )
+}
+
+Detail.propTypes = {
+  id: string,
+  name: string,
+  detail: arrayOf(object),
+  toggle: func
 }
