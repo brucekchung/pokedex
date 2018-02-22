@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { shape, func, string } from 'prop-types' //PropTypes
 import { connect } from 'react-redux'
-import { sendTypeAction, sendClickedAction } from '../../actions/actionIndex'
+import { sendTypeAction, sendClickedAction, sendDetailAction } from '../../actions/actionIndex'
 import { getPokeType, getPokemon } from '../../api'
 import { Loading } from '../../components/Loading/Loading'
 import { Card } from '../../components/Card/Card'
@@ -23,13 +23,14 @@ export class PokeContainer extends Component {
 
     console.log('pokeData: ', pokeData)
     this.props.sendClicked(id)
+    this.props.sendDetail(pokeData)
   }
 
   generateCards = () => {
     return this.props.pokeType.map(type => {
       if (type.id === this.props.clicked) {
         return (
-          <Detail />
+          <Detail detail={this.props.detail} name={type.name} />
         )
       } else {
         return (
@@ -66,11 +67,13 @@ PokeContainer.propTypes = {
 export const mapState = state => ({ 
   pokeType: state.type,
   clicked: state.clicked,
+  detail: state.detail,
 })
 
 export const mapDispatch = dispatch => ({ 
   sendType: (type) => dispatch(sendTypeAction(type)), 
   sendClicked: (id) => dispatch(sendClickedAction(id)),
+  sendDetail: (poke) => dispatch(sendDetailAction(poke))
 })
 
 export default connect(mapState, mapDispatch)(PokeContainer)
