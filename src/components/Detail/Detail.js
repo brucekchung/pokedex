@@ -1,11 +1,11 @@
 import React from 'react'
 import './Detail.css'
 
-export const Detail = ({ name, detail }) => {
+export const Detail = ({ id, name, detail, toggle }) => {
   const allPoke = () => {
     return detail.map(poke => {
       return (
-        <div>
+        <div onClick={() => toggle(id)} >
           <img src={poke.sprites.front_default} />
           <h3>{poke.name}</h3>
           <p>type: {name}</p>
