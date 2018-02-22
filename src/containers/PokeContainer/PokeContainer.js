@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { shape, func, string } from 'prop-types' //PropTypes
+import { shape, func, string, arrayOf, object } from 'prop-types' //PropTypes
 import { connect } from 'react-redux'
 import { sendTypeAction, sendClickedAction, sendDetailAction } from '../../actions/actionIndex'
 import { getPokeType, getPokemon } from '../../api'
@@ -73,8 +73,9 @@ export class PokeContainer extends Component {
 }
 
 PokeContainer.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func //isRequired
+  // fake: shape({ fake: string }),
+  // fakeAction: func //isRequired
+  pokeType: arrayOf(object)
 }
 
 export const mapState = state => ({ 
